@@ -1,0 +1,379 @@
+/* ArbitPage.css */
+.arbit-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .arbit-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .error-message {
+    color: var(--adanger);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Landing page styling */
+  .landing-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .landing-page h1 {
+    margin-bottom: 1.5rem;
+    color: var(--headingtext);
+  }
+  
+  .instructions {
+    background-color: var(--tralternatebase);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .instructions p {
+    margin-bottom: 1rem;
+  }
+  
+  .instructions h2 {
+    margin: 1.5rem 0 1rem;
+    color: var(--headingtext);
+  }
+  
+  .instructions-list {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .instructions-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+  
+  /* Hover image */
+  .hover-image-container {
+    position: relative;
+  }
+  
+  .hover-image {
+    position: absolute;
+    z-index: 3;
+    max-width: 640px;
+    max-height: 360px;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* Arbitrage content */
+  .arbitrage-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .arbitrage-container h1 {
+    margin-bottom: 1.5rem;
+    color: var(--headingtext);
+  }
+  
+  /* Jump links and filters */
+  .jump-links {
+    margin-bottom: 1.5rem;
+    background-color: var(--tralternatebase);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .jump-links p {
+    margin-bottom: 1rem;
+  }
+  
+  .jump-links .btn {
+    margin: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: var(--tralternate);
+    color: var(--normaltext);
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+  }
+  
+  .jump-links .btn:hover {
+    background-color: var(--hover);
+  }
+  
+  .jump-links .btn.success {
+    background-color: var(--asuccess);
+    color: white;
+  }
+  
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .filter-input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--verywhite);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 160px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .filter-input:focus {
+    outline: none;
+    border-color: var(--ainfo);
+    box-shadow: 0 0 0 3px rgba(85, 158, 255, 0.25);
+  }
+  
+  /* Arbitrage section */
+  .arb-section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 65px;
+  }
+  
+  .arb-header {
+    position: sticky;
+    top: 48px;
+    background-color: var(--background);
+    padding: 1rem 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .storename-link {
+    text-decoration: none;
+  }
+  
+  .storename {
+    color: var(--ainfo);
+    margin: 0;
+    font-size: 1.3rem;
+    display: inline;
+  }
+  
+  .nav-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  
+  .nav-arrow:hover {
+    background-color: var(--hover);
+  }
+  
+  .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+  
+  .arb-header hr {
+    width: 20%;
+    border: 0;
+    height: 1px;
+    background-color: var(--verywhite);
+    margin: 0.5rem 0 0;
+  }
+  
+  /* Arbitrage table */
+  .arb-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .arb-table th {
+    background-color: var(--headerbackground);
+    padding: 0.75rem;
+    font-weight: 600;
+    text-align: left;
+    position: sticky;
+    top: 104px; /* Below the section header */
+    z-index: 5;
+  }
+  
+  .arb-table th.center-align {
+    text-align: center;
+  }
+  
+  .arb-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--lightgrey);
+    vertical-align: middle;
+  }
+  
+  .arb-table td.center-align {
+    text-align: center;
+  }
+  
+  .arb-table tr:hover {
+    background-color: var(--hover);
+  }
+  
+  /* Special text elements */
+  .variant-text {
+    font-style: italic;
+    margin-left: 0.3rem;
+  }
+  
+  .flag-text, .reserved-mark, .stocks-mark, .syp-mark {
+    margin-left: 0.3rem;
+  }
+  
+  .reserved-mark {
+    font-weight: bold;
+  }
+  
+  .emoji {
+    font-size: 1.2rem;
+    cursor: default;
+  }
+  
+  .emoji.clickable {
+    cursor: pointer;
+  }
+  
+  .sussy-warning {
+    margin-left: 0.3rem;
+    cursor: help;
+  }
+  
+  /* Pagination */
+  .pagination-row td {
+    background-color: var(--headerbackground);
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    color: var(--normaltext);
+    margin: 0 0.3rem;
+  }
+  
+  .pagination-link:hover {
+    background-color: var(--hover);
+  }
+  
+  /* Back to top */
+  .back-to-top-row td {
+    background-color: var(--background);
+    padding: 0.75rem;
+    text-align: right;
+  }
+  
+  .back-to-top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--normaltext);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  
+  .back-to-top-link:hover {
+    color: var(--ainfo);
+  }
+  
+  /* Arrows */
+  .arrow {
+    border: solid var(--normal);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+  }
+  
+  .left {
+    transform: rotate(135deg);
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+  }
+  
+  /* Legend and affiliate */
+  .legend {
+    margin-top: 2rem;
+  }
+  
+  .legend h4 {
+    margin: 0.5rem 0;
+    font-weight: normal;
+  }
+  
+  .affiliate-message {
+    margin-top: 2rem;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  /* No arbitrage message */
+  .no-arbitrage {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--tralternatebase);
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .arb-table {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .arbit-content {
+      padding: 1rem;
+    }
+    
+    .arb-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .action-buttons {
+      flex-wrap: wrap;
+      margin-left: 0;
+    }
+    
+    .jump-links .btn {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.85rem;
+    }
+  }

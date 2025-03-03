@@ -1,0 +1,380 @@
+/* UploadPage.css */
+.upload-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .upload-content {
+    padding: 2rem;
+    flex-grow: 1;
+  }
+  
+  .page-title {
+    color: var(--headingtext);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .error-message {
+    color: var(--adanger);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Upload Form */
+  .upload-form-container {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    background-color: var(--tralternatebase);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  /* Mode Selector */
+  .mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mode-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  
+  .mode-option.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Stores Selector */
+  .stores-selector {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .stores-select {
+    width: 100%;
+    max-width: 600px;
+    max-height: 240px;
+    text-align: left;
+    border: 1px solid var(--verywhite);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-y: auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .stores-select label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    cursor: pointer;
+  }
+  
+  /* Upload Options */
+  .upload-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .upload-option-btn {
+    padding: 0.75rem 1.25rem;
+    background-color: var(--tralternate);
+    border: 1px solid var(--verywhite);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+  }
+  
+  .upload-option-btn:hover {
+    background-color: var(--hover);
+  }
+  
+  .separator {
+    color: var(--normaltext);
+    font-weight: 500;
+  }
+  
+  .text-area {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--verywhite);
+    border-radius: 4px;
+    padding: 0.75rem;
+    font-family: monospace;
+    resize: vertical;
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .action-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.1s;
+  }
+  
+  .action-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .action-button.primary {
+    background-color: var(--ainfo);
+    color: white;
+  }
+  
+  .action-button.primary:hover:not(:disabled) {
+    background-color: var(--anormal);
+    transform: translateY(-2px);
+  }
+  
+  .action-button.secondary {
+    background-color: var(--tralternatebase);
+    border: 1px solid var(--verywhite);
+    color: var(--normaltext);
+  }
+  
+  .action-button.secondary:hover:not(:disabled) {
+    background-color: var(--hover);
+    transform: translateY(-2px);
+  }
+  
+  /* Advanced Options */
+  .advanced-options {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .toggle-options-btn {
+    background: none;
+    border: none;
+    color: var(--ainfo);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9rem;
+  }
+  
+  .options-panel {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .option-row {
+    margin-bottom: 0.75rem;
+  }
+  
+  .option-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+  
+  .small-input {
+    width: 40px;
+    text-align: center;
+    padding: 0.25rem;
+    border: 1px solid var(--verywhite);
+    border-radius: 3px;
+  }
+  
+  .sort-select {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--verywhite);
+    border-radius: 3px;
+    background-color: var(--background);
+  }
+  
+  /* Warning Message */
+  .warning-message {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(255, 165, 0, 0.1);
+    border-left: 4px solid var(--awarning);
+    border-radius: 4px;
+  }
+  
+  /* Instructions */
+  .instructions-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--tralternatebase);
+    border-radius: 8px;
+  }
+  
+  .instructions-container h2 {
+    margin-bottom: 1.5rem;
+    color: var(--headingtext);
+    font-size: 1.5rem;
+  }
+  
+  .instructions-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .instructions-list > li {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  
+  .instructions-list > li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--ainfo);
+    font-size: 1.25rem;
+  }
+  
+  .sub-instructions {
+    list-style-type: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .sub-instructions li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+  
+  .sub-instructions li::before {
+    content: "◦";
+    position: absolute;
+    left: 0;
+    color: var(--ainfo);
+  }
+  
+  /* Search Results */
+  .search-results {
+    margin-top: 2rem;
+  }
+  
+  .results-placeholder {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--tralternatebase);
+    border-radius: 8px;
+    font-style: italic;
+  }
+  
+  /* Legend */
+  .legend {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--tralternatebase);
+    border-radius: 8px;
+  }
+  
+  .legend p {
+    margin: 0.5rem 0;
+  }
+  
+  /* Info Message */
+  .info-message {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--tralternatebase);
+    border-radius: 8px;
+    font-style: italic;
+  }
+  
+  /* Tooltip styles */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--navbackground);
+    color: var(--almostwhite);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--navbackground) transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .upload-content {
+      padding: 1rem;
+    }
+    
+    .mode-selector {
+      gap: 1rem;
+    }
+    
+    .stores-select {
+      grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .action-button {
+      width: 100%;
+      max-width: 250px;
+    }
+  }

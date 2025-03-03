@@ -1,0 +1,206 @@
+/* src/components/auth/AuthForms.css */
+
+.auth-form-container {
+    max-width: 450px;
+    width: 100%;
+    margin: 2rem auto;
+  }
+  
+  .auth-form {
+    position: relative;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark-theme .auth-form {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .form-field {
+    position: relative;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    margin-left: 0.25rem;
+    color: var(--text-secondary);
+  }
+  
+  .input-wrapper {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .input-wrapper.focused {
+    z-index: 1;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+  
+  .form-input:hover:not(:focus) {
+    border-color: rgba(255, 0, 85, 0.3);
+  }
+  
+  .input-glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: 0.75rem;
+    background: linear-gradient(to right, rgba(225, 29, 72, 0.2), rgba(219, 39, 119, 0.2));
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(4px);
+  }
+  
+  .form-submit-button {
+    margin-top: 0.5rem;
+  }
+  
+  .form-error,
+  .form-success {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+  
+  .form-error {
+    background-color: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    color: #ef4444;
+  }
+  
+  .form-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: #10b981;
+  }
+  
+  .auth-links {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .auth-link {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    text-decoration: none;
+  }
+  
+  .auth-link:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 0, 85, 0.3);
+  }
+  
+  /* OAuth Sign In Styles */
+  .oauth-providers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  
+  .oauth-form {
+    margin-bottom: 0.5rem;
+  }
+  
+  .oauth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .oauth-button:hover {
+    background-color: var(--hover);
+    border-color: var(--text-secondary);
+  }
+  
+  .provider-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .provider-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .provider-name {
+    font-weight: 500;
+  }
+  
+  /* Separator Component */
+  .separator {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: var(--text-secondary);
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--border-color);
+  }
+  
+  .separator-text {
+    margin: 0 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .auth-form-container {
+      max-width: 100%;
+      margin: 1rem auto;
+    }
+  
+    .auth-form {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+    }
+  }

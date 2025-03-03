@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+     "@/*": ["src/*"]
+    },
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,13 +19,14 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
+        "name": "next",
+        "version": "14.2.5"
+      },
+      {
+        "name": "typescript-eslint"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.js"],
   "exclude": ["node_modules"]
 }

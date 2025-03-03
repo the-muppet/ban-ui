@@ -1,0 +1,99 @@
+/* HomePage.css */
+.home-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .background-container {
+    background-image: var(--backgroundImage);
+    background-repeat: no-repeat;
+    background-color: var(--background);
+    height: 480px;
+    width: 100%;
+  }
+  
+  .main-body {
+    padding-top: 75px;
+  }
+  
+  .search-container {
+    margin-left: 20px;
+    max-width: 90%;
+  }
+  
+  .search-form {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .search-input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--ainfo);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-message {
+    color: var(--adanger);
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  .content-section {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  .jump-section {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  
+  .jump-section a {
+    color: var(--ainfo);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .jump-section a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer {
+    color: var(--activetext);
+    margin-left: 20px;
+    margin-top: auto;
+    padding: 20px 0;
+    font-size: 0.9rem;
+  }
+  
+  .footer-divider {
+    width: 30%;
+    border: 1px dotted var(--normaltext);
+    opacity: 0.5;
+  }
+  
+  @media (max-width: 768px) {
+    .search-container {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    
+    .content-section, .jump-section, .footer {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }

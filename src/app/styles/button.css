@@ -1,0 +1,202 @@
+/* src/components/ui/Button.css */
+
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  /* Variants */
+  .button-primary {
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    color: white;
+  }
+  
+  .button-primary:hover:not(:disabled) {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-dark));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-secondary {
+    background: linear-gradient(to right, var(--secondary), var(--secondary-dark));
+    color: white;
+  }
+  
+  .button-secondary:hover:not(:disabled) {
+    background: linear-gradient(to right, var(--secondary-dark), var(--secondary-dark));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-slim {
+    background: linear-gradient(to right, var(--primary-light), var(--primary));
+    color: white;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .button-slim:hover:not(:disabled) {
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    transform: translateY(-1px);
+  }
+  
+  .button-danger {
+    background-color: var(--danger);
+    color: white;
+  }
+  
+  .button-danger:hover:not(:disabled) {
+    background-color: #c53030;
+  }
+  
+  .button-success {
+    background-color: var(--success);
+    color: white;
+  }
+  
+  .button-success:hover:not(:disabled) {
+    background-color: #2f855a;
+  }
+  
+  .button-warning {
+    background-color: var(--warning);
+    color: white;
+  }
+  
+  .button-warning:hover:not(:disabled) {
+    background-color: #c05621;
+  }
+  
+  .button-info {
+    background-color: var(--info);
+    color: white;
+  }
+  
+  .button-info:hover:not(:disabled) {
+    background-color: #2c5282;
+  }
+  
+  .button-ghost {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+  }
+  
+  .button-ghost:hover:not(:disabled) {
+    background-color: var(--hover);
+    border-color: var(--text-secondary);
+  }
+  
+  /* Sizes */
+  .button-sm {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.625rem;
+  }
+  
+  .button-md {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .button-lg {
+    font-size: 1.125rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  /* Full width */
+  .button-full-width {
+    width: 100%;
+  }
+  
+  /* Disabled state */
+  .button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Loading state */
+  .button-loading {
+    cursor: wait;
+  }
+  
+  .button-content-loading {
+    opacity: 0.7;
+  }
+  
+  .button-loader {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loader-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    margin: 0 2px;
+    animation: loaderDot 1.2s infinite ease-in-out;
+  }
+  
+  .loader-dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .loader-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .loader-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes loaderDot {
+    0%, 80%, 100% {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Active state */
+  .button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+  
+  /* Focus state */
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  }
+  
+  /* Media queries for responsive behavior */
+  @media (max-width: 640px) {
+    .button-sm {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  
+    .button-md {
+      font-size: 0.875rem;
+      padding: 0.375rem 0.75rem;
+    }
+  
+    .button-lg {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
