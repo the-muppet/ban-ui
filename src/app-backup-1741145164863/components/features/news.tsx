@@ -1,7 +1,9 @@
+'use client';
+
 // src/components/features/MtgNewspaper.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import './MtgNewspaper.css';
+import '@/app/styles/MtgNewspaper.css';
 
 export interface NewspaperCard {
   id: string;

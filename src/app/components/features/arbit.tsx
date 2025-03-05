@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navigation from '@/app/components/ui/Navigation';
+import './arbit.css';
 
 interface ArbitEntry {
   CardId: string;
@@ -179,8 +180,7 @@ const ArbitPage: React.FC<ArbitPageProps> = ({
     return (
       <div className="options-page">
         <h2>Options</h2>
-        <p>Options page content to be implemented.</p>
-        {/* This would include options for vendors, editions, etc. */}
+        
       </div>
     );
   };

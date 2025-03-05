@@ -1,19 +1,15 @@
 'use client'
 
-import "./globals.css";
-import { motion } from "framer-motion"
-import Button from "@/app/components/ui/Button";
-import { Home, User, Bell, Settings, LogOut, Menu, X, ChevronRight, Search, Newspaper, Upload, Euro } from "lucide-react";
+import { motion } from "framer-motion";
+import { Home, User, Bell, Settings, LogOut, Menu, X, Upload, Euro, ChevronRight } from "lucide-react";
+import { Search, Newspaper } from "lucide-react";
+import { ThemeProvider } from "@/app/context/Theme";
 import Navigation from "@/app/components/ui/Navigation";
-import { useState } from "react";
+import Button from "@/app/components/ui/Button";
 import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 import Link from "next/link";
-
-// Properly implement the cn function
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
+import '@/styes/portal.css';
 
 const navItems = [
   { label: "Dashboard", href: "/", icon: Home, badge: undefined },
@@ -37,8 +33,8 @@ function FloatingPaths({ position }: { position: number }) {
   }))
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      <svg className="w-full h-full" viewBox="0 0 696 316" fill="none">
+    <div className="floating-paths">
+      <svg className="floating-paths-svg" viewBox="0 0 696 316" fill="none">
         <title>Background Paths</title>
         <defs>
           <linearGradient id="spectrum-gradient">
@@ -88,28 +84,26 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function BackgroundPaths({
   title = "Background Paths",
-}: {
-  title?: string
 }) {
   const words = title.split(" ")
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-      <div className="absolute inset-0">
+    <div className="background-paths-container">
+      <div className="background-overlay">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
+      <div className="content-container">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          style={{ maxWidth: "32rem", margin: "0 auto" }}
+          className="title-container"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-8 tracking-tighter">
+          <h1 className="main-title">
             {words.map((word, wordIndex) => (
-              <span key={wordIndex} className="inline-block mr-4 last:mr-0">
+              <span key={wordIndex} className="title-word">
                 {word.split("").map((letter, letterIndex) => (
                   <motion.span
                     key={`${wordIndex}-${letterIndex}`}
@@ -121,12 +115,7 @@ export function BackgroundPaths({
                       stiffness: 150,
                       damping: 25,
                     }}
-                    style={{
-                      display: 'inline-block',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundImage: 'linear-gradient(to right, white, rgb(156 163 175))',
-                    }}
+                    className="animated-letter"
                   >
                     {letter}
                   </motion.span>
@@ -135,26 +124,13 @@ export function BackgroundPaths({
             ))}
           </h1>
 
-          <div
-            className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 
-                        dark:from-white/10 dark:to-black/10 p-px rounded-2xl backdrop-blur-lg 
-                        overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
+          <div className="button-container">
             <Button
               variant="ghost"
-              className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
-          bg-white/10 hover:bg-white/20
-          text-white transition-all duration-300 
-          group-hover:-translate-y-0.5 border border-white/20
-          hover:shadow-md hover:shadow-red-900/30"
+              className="action-button"
             >
-              <span className="opacity-90 group-hover:opacity-100 transition-opacity">Get Started</span>
-              <span
-                className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 
-                                transition-all duration-300"
-              >
-                →
-              </span>
+              <span className="button-text">Get Started</span>
+              <span className="button-arrow">→</span>
             </Button>
           </div>
         </motion.div>
@@ -163,50 +139,15 @@ export function BackgroundPaths({
   )
 }
 
-interface NavItem {
-  label: string;
-  href: string;
-  icon: any; // Using any temporarily to resolve the type conflict
-  badge?: number | string;
-}
-
-interface PortalLayoutProps {
-  children: React.ReactNode;
-  userName?: string;
-  userEmail?: string;
-  avatarUrl?: string;
-  userId?: string;
-}
-
-// Make this the default export
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>
-        <Navigation navItems={[
-          { name: "Home", short: "H", link: "/" },
-          { name: "Search", short: "S", link: "/search" },
-          { name: "Arbit", short: "A", link: "/arbit" },
-          { name: "User", short: "U", link: "/user" },
-          { name: "Newspaper", short: "N", link: "/newspaper" },
-          { name: "Upload", short: "U", link: "/upload" },
-        ]} />
-        <main>
-          {children}
-        </main>
-      </body>
-    </html>
-  );
-}
-
-// Change to named export
-export function PortalLayout({
+/**
+ * Props interfaces
+ */
+function PortalLayout({
   children,
   userName = 'User Name',
   userEmail = 'user@example.com',
-  avatarUrl,
   userId = '1',
-}: PortalLayoutProps) {
+}) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
 
@@ -215,28 +156,21 @@ export function PortalLayout({
   };
 
   return (
-    <div className="layout min-h-screen bg-gradient-to-br from-background to-background-alt">
+    <div className="layout">
       {/* Sidebar for desktop */}
-      <aside 
-        className={cn(
-          'fixed left-0 top-0 z-40 h-screen w-64 transform transition-transform duration-300 ease-in-out',
-          'border-r border-color-border bg-glass-background backdrop-blur-xl',
-          'md:translate-x-0',
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        )}
-      >
+      <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* Sidebar Header with Logo and Close button */}
-        <div className="flex h-16 items-center justify-between border-b border-color-border px-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-md bg-gradient-primary flex items-center justify-center">
-              <span className="font-bold text-white">P</span>
+        <div className="sidebar-header">
+          <Link href="/" className="logo-container">
+            <div className="logo">
+              <span className="logo-text">P</span>
             </div>
-            <span className="text-xl font-semibold">Portal</span>
+            <span className="logo-name">Portal</span>
           </Link>
           <Button 
             variant="ghost" 
             size="sm"
-            className="md:hidden p-1.5 rounded-full" 
+            className="close-sidebar-button" 
             onClick={toggleSidebar}
           >
             <X size={20} />
@@ -244,54 +178,44 @@ export function PortalLayout({
         </div>
 
         {/* User Profile Summary */}
-        <div className="p-4 border-b border-color-border">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center overflow-hidden">
+        <div className="user-profile">
+          <div className="user-profile-container">
+            <div className="avatar-container">
               {avatarUrl ? (
-                <img src={avatarUrl} alt={userName} className="w-full h-full object-cover" />
+                <img src={avatarUrl} alt={userName} className="avatar-image" />
               ) : (
-                <span className="font-semibold text-white">{userName.charAt(0)}</span>
+                <span className="avatar-placeholder">{userName.charAt(0)}</span>
               )}
             </div>
-            <div className="flex flex-col overflow-hidden">
-              <span className="font-medium truncate">{userName}</span>
-              <span className="text-xs text-color-text-muted truncate">{userEmail}</span>
+            <div className="user-info">
+              <span className="user-name">{userName}</span>
+              <span className="user-email">{userEmail}</span>
             </div>
           </div>
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex-1 overflow-y-auto p-4">
-          <ul className="space-y-1">
+        <nav className="sidebar-nav">
+          <ul className="nav-list">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               
               return (
-                <li key={item.href}>
+                <li key={item.href} className="nav-item">
                   <Link 
                     href={item.href}
-                    className={cn(
-                      'flex items-center justify-between rounded-md px-3 py-2 transition-all',
-                      isActive 
-                        ? 'bg-gradient-primary text-white' 
-                        : 'text-color-text-muted hover:bg-glass-background hover:text-color-text'
-                    )}
+                    className={`nav-link ${isActive ? 'nav-link-active' : ''}`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="nav-link-content">
                       <item.icon size={20} />
                       <span>{item.label}</span>
                     </div>
                     {item.badge && (
-                      <span className={cn(
-                        'rounded-full px-2 py-0.5 text-xs',
-                        isActive 
-                          ? 'bg-white/20 text-white'
-                          : 'bg-primary text-white'
-                      )}>
+                      <span className={`nav-badge ${isActive ? 'nav-badge-active' : ''}`}>
                         {item.badge}
                       </span>
                     )}
-                    {isActive && <ChevronRight size={16} />}
+                    {isActive && <ChevronRight size={16} className="active-indicator" />}
                   </Link>
                 </li>
               );
@@ -300,51 +224,46 @@ export function PortalLayout({
         </nav>
 
         {/* Sidebar Footer */}
-        <div className="border-t border-color-border p-4">
+        <div className="sidebar-footer">
           <Button 
             variant="ghost" 
-            fullWidth={true}
+            className="logout-button"
             size="sm"
           >
-            <LogOut size={16} className="mr-2" />
+            <LogOut size={16} className="logout-icon" />
             Logout
           </Button>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className={cn(
-        'flex-1 transition-all duration-300',
-        'md:ml-64'
-      )}>
+      <main className={`main-content ${sidebarOpen ? 'content-shifted' : ''}`}>
         {/* Top Navigation Bar */}
-        <header className="sticky top-0 z-30 h-16 border-b border-color-border bg-glass-background backdrop-blur-xl">
-          <div className="flex h-full items-center justify-between px-4">
+        <header className="header">
+          <div className="header-container">
             <Button 
               variant="ghost" 
               size="sm"
-              className="md:hidden p-1.5 rounded-md" 
+              className="menu-button" 
               onClick={toggleSidebar}
             >
               <Menu size={20} />
             </Button>
             
-            <div className="md:ml-auto flex items-center gap-2">
+            <div className="header-actions">
               <Button 
                 variant="ghost" 
                 size="sm"
-                className="p-1.5 rounded-full relative"
+                className="notification-button"
               >
                 <Bell size={20} />
-                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-xs text-white flex items-center justify-center">
-                  3
-                </span>
+                <span className="notification-badge">3</span>
               </Button>
               
               <Button 
                 variant="ghost" 
                 size="sm"
-                className="p-1.5 rounded-full"
+                className="settings-button"
               >
                 <Settings size={20} />
               </Button>
@@ -353,7 +272,7 @@ export function PortalLayout({
         </header>
 
         {/* Page Content */}
-        <div className="container mx-auto p-4 md:p-6">
+        <div className="page-content">
           {children}
         </div>
       </main>
@@ -361,10 +280,35 @@ export function PortalLayout({
       {/* Overlay for mobile sidebar */}
       {sidebarOpen && (
         <div 
-          className="fixed inset-0 z-30 bg-black/50 md:hidden"
+          className="sidebar-overlay"
           onClick={toggleSidebar}
         />
       )}
     </div>
   );
 }
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <ThemeProvider>
+        <body>
+          <Navigation navItems={[
+            { name: "Home", short: "H", link: "/" },
+            { name: "Search", short: "S", link: "/search" },
+            { name: "Arbit", short: "A", link: "/arbit" },
+            { name: "User", short: "U", link: "/user" },
+            { name: "Newspaper", short: "N", link: "/newspaper" },
+            { name: "Upload", short: "U", link: "/upload" },
+          ]} />
+          <main>
+            {children}
+          </main>
+        </body>
+      </ThemeProvider>
+    </html>
+  );
+}
+
+// Export PortalLayout as named export
+export { PortalLayout };

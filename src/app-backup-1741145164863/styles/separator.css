@@ -1,0 +1,24 @@
+/* src/components/ui/Separator.css */
+
+.separator {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--border-color);
+  }
+  
+  .separator-text {
+    margin: 0 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 2
+    

@@ -5,7 +5,7 @@ import { useAuth } from '@/app/context/Authentication';
 import Navigation from '@/app/components/ui/Navigation';
 import UpdatePassword from '@/app/components/auth/UpdatePassword';
 import Button from '@/app/components/ui/Button';
-import '@/app/styles/user.css';
+import './user.css';
 
 interface UserPortalProps {
   title: string;
@@ -19,7 +19,6 @@ interface UserPortalProps {
   }[];
 }
 
-// Enum for different sections of the user portal
 enum PortalSection {
   Overview = 'overview',
   Account = 'account',
@@ -44,15 +43,13 @@ const UserPortal: React.FC<UserPortalProps> = ({
   const [searchHistory, setSearchHistory] = useState<any[]>([]);
   const [isNewKeyModalOpen, setIsNewKeyModalOpen] = useState(false);
   const [newKeyName, setNewKeyName] = useState('');
-  
-  // Fetch user data on mount
+
   useEffect(() => {
     if (isAuthenticated) {
       fetchUserData();
     }
   }, [isAuthenticated, activeSection]);
   
-  // Mock function to fetch user data - in a real app this would call your API
   const fetchUserData = async () => {
     setIsLoading(true);
     try {

@@ -4,8 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Navigation from '@/app/components/ui/Navigation';
 import SearchForm from '@/app/components/ui/SearchForm';
+import './Search.css';
 
-interface SearchPageProps {
+
+  interface SearchPageProps {
   title: string;
   cleanSearchQuery?: string;
   searchQuery?: string;
